@@ -1,0 +1,83 @@
+﻿<metro:MetroWindow x:Class="PriceCalculation.Application.View.LayoutWindow"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+                   xmlns:custom="clr-namespace:WpfLibrary.ApplicationHelper.CustomControl;assembly=WpfLibrary.ApplicationHelper"
+                   xmlns:interactivity="http://schemas.microsoft.com/expression/2010/interactivity"
+                   xmlns:behavior="clr-namespace:WpfLibrary.ApplicationHelper.Behavior;assembly=WpfLibrary.ApplicationHelper"
+                   xmlns:product="clr-namespace:PriceCalculation.Application.View.Domain.Product"
+                   
+                   Style="{StaticResource MyDesignBaseWindow}"
+                   GlowBrush="{DynamicResource AccentColorBrush}"
+                   ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen"
+                   Title="価格計算ツール" Height="600" Width="1200" MinHeight="600" MinWidth="1200">
+    <metro:MetroWindow.LeftWindowCommands>
+        <metro:WindowCommands>
+            <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False" x:Name="MenuToggleButton" Width="30" Height="30" />
+        </metro:WindowCommands>
+    </metro:MetroWindow.LeftWindowCommands>
+
+    <material:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+        <material:DrawerHost.LeftDrawerContent>
+            <DockPanel MinWidth="212">
+                <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                              DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="16"
+                              IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
+                <StackPanel>
+                    <WrapPanel Orientation="Horizontal">
+                        <custom:TileMenu Title="商品 一覧" Describe="商品の一覧を表示します"
+                                         Background="{StaticResource AccentColorBrush2}"
+                                         Command="{Binding ShowProductListEventHandler}">
+                            <custom:TileMenu.Tag>
+                                <material:PackIcon Kind="Mushroom" Foreground="White" />
+                            </custom:TileMenu.Tag>
+                        </custom:TileMenu>
+                        <custom:TileMenu Title="商品 登録" Describe="新しい商品を登録します" Background="{StaticResource AccentColorBrush2}">
+                            <custom:TileMenu.Tag>
+                                <material:PackIcon Kind="Cannabis" Foreground="White" />
+                            </custom:TileMenu.Tag>
+                        </custom:TileMenu>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal">
+                        <custom:TileMenu Title="業者 一覧" Describe="業者の一覧を表示します" Background="{StaticResource AccentColorBrush3}">
+                            <custom:TileMenu.Tag>
+                                <material:PackIcon Kind="Leaf" Foreground="White" />
+                            </custom:TileMenu.Tag>
+                        </custom:TileMenu>
+                        <custom:TileMenu Title="業者 登録" Describe="新しい業者を登録します" Background="{StaticResource AccentColorBrush3}">
+                            <custom:TileMenu.Tag>
+                                <material:PackIcon Kind="Water" Foreground="White" />
+                            </custom:TileMenu.Tag>
+                        </custom:TileMenu>
+                    </WrapPanel>
+                </StackPanel>
+            </DockPanel>
+        </material:DrawerHost.LeftDrawerContent>
+        <DockPanel>
+            <UserControl x:Name="MainFrame">
+                <interactivity:Interaction.Triggers>
+                    <behavior:InteractionMessageTrigger Messenger="{Binding Messenger}" MessageKey="ShowProductList">
+                        <behavior:PagingInteractionMessageAction Target="{Binding ElementName=MainFrame}" WindowType="{x:Type product:ProductListUserControl}" />
+                    </behavior:InteractionMessageTrigger>
+                </interactivity:Interaction.Triggers>
+                <UserControl>
+                    <StackPanel Margin="20">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MyDesignTextBlock}">
+                                <Setter Property="Foreground" Value="LightSlateGray" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock Text="原価計算ツール" FontSize="48" Margin="0 10" />
+                        <TextBlock Text="このツールは原価計算のために必要な機能を提供しています。" />
+                        <StackPanel Margin="20">
+                            <TextBlock Text="・商品の登録から閲覧、その価格の計算" />
+                            <TextBlock Text="・業者情報の管理" />
+                            <TextBlock Text="・使用している原材料の管理" />
+                        </StackPanel>
+                    </StackPanel>
+                </UserControl>
+            </UserControl>
+        </DockPanel>
+    </material:DrawerHost>
+</metro:MetroWindow>
