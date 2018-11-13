@@ -1,6 +1,6 @@
 ﻿namespace PriceCalculator.Domain.Model.Product
 {
-    class ProductRepository : DomainHelper.GuidRepository
+    class ProductIdRepository : DomainHelper.GuidRepository
     {
         internal static ProductId NextIdentifier()
         {

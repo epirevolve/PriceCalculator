@@ -2,7 +2,7 @@
 
 namespace PriceCalculator.Domain.Model.Wholesale
 {
-    public sealed class GoodsId : DomainHelper.IValueObject<GoodsId>
+    public sealed class IngredientId : DomainHelper.IValueObject<IngredientId>
     {
 
         #region variable
@@ -19,7 +19,7 @@ namespace PriceCalculator.Domain.Model.Wholesale
 
         #region constructor
 
-        public GoodsId(string id)
+        public IngredientId(string id)
         {
             if (string.IsNullOrEmpty(id)) throw new ArgumentNullException("id");
 
@@ -37,7 +37,7 @@ namespace PriceCalculator.Domain.Model.Wholesale
         public override bool Equals(object obj)
         {
             if (obj == null || obj.GetType() != this.GetType()) return false;
-            var other = (GoodsId)obj;
+            var other = (IngredientId)obj;
             return this._id.Equals(other._id);
         }
 
@@ -46,7 +46,7 @@ namespace PriceCalculator.Domain.Model.Wholesale
             return this._id.GetHashCode();
         }
 
-        public bool SameValueAs(GoodsId other)
+        public bool SameValueAs(IngredientId other)
         {
             return other != null && this._id.Equals(other._id);
         }

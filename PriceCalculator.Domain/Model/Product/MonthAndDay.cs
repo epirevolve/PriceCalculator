@@ -1,6 +1,6 @@
 ﻿namespace PriceCalculator.Domain.Model.Product
 {
-    public sealed class MonthAndDate : DomainHelper.IValueObject<MonthAndDate>
+    public sealed class MonthAndDay : DomainHelper.IValueObject<MonthAndDay>
     {
 
         #region variable
@@ -19,7 +19,7 @@
 
         #region constructor
 
-        public MonthAndDate(int month, int day)
+        public MonthAndDay(int month, int day)
         {
             this._month = month;
             this._day = day;
@@ -46,7 +46,7 @@
         public override bool Equals(object obj)
         {
             if (obj == null || obj.GetType() != this.GetType()) return false;
-            var other = (MonthAndDate)obj;
+            var other = (MonthAndDay)obj;
             return this._month == other._month && this._day == other._day;
         }
 
@@ -55,7 +55,7 @@
             return this._month.GetHashCode() ^ this._day.GetHashCode();
         }
 
-        public bool SameValueAs(MonthAndDate other)
+        public bool SameValueAs(MonthAndDay other)
         {
             return other != null && this._month == other._month && this._day == other._day;
         }

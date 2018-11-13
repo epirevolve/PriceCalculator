@@ -1,4 +1,4 @@
-﻿namespace PriceCalculation.Application.View
+﻿namespace PriceCalculator.Application.View
 {
     /// <summary>
     /// LayoutWindow.xaml の相互作用ロジック

@@ -1,7 +1,8 @@
-﻿<Application x:Class="PriceCalculation.Application.App"
+﻿<Application x:Class="PriceCalculator.Application.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PriceCalculation.Application"
+             xmlns:local="clr-namespace:PriceCalculator.Application"
+             xmlns:converter="clr-namespace:WpfLibrary.ApplicationHelper.Converter;assembly=WpfLibrary.ApplicationHelper"
              Startup="Application_Startup">
     <Application.Resources>
         <ResourceDictionary>
@@ -37,6 +38,22 @@
             <SolidColorBrush x:Key="RightArrowFill" Color="{DynamicResource Primary500}"/>
             <SolidColorBrush x:Key="IdealForegroundColorBrush" Color="{DynamicResource Primary500Foreground}"/>
             <SolidColorBrush x:Key="IdealForegroundDisabledBrush" Color="{DynamicResource Primary500}" Opacity="0.4"/>
+
+            <!--import converters-->
+            <converter:MultiConverter x:Key="MultiConverter" />
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:VisibilityConverter x:Key="VisibilityConverter" />
+            <converter:VisibilityTypeDependConverter x:Key="VisibilityTypeDependConverter" />
+            <converter:InverseVisibilityConverter x:Key="InverseVisibilityConverter" />
+            <converter:PercentageConverter x:Key="PercentageConverter" />
+            <converter:BoolToStringConverter x:Key="BoolToStringConverter" />
+            <converter:IntToBoolConverter x:Key="IntToBoolConverter" />
+            <converter:BindableEqualConverter x:Key="BindableEqualConverter" />
+            <converter:FileNameExtractConverter x:Key="FileNameExtractConverter" />
+            <converter:BoolToCheckConverter x:Key="BoolToCheckConverter" />
+            <converter:MultiLineTextEllipsisConverter x:Key="MultiLineTextEllipsisConverter" />
+            <converter:RichTextItemsToDocumentConverter x:Key="RichTextItemsToDocumentConverter" />
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

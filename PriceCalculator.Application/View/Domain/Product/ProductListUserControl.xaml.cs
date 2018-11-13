@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PriceCalculation.Application.View.Domain.Product
+namespace PriceCalculator.Application.View.Domain.Product
 {
     /// <summary>
     /// ProductListUserControl.xaml の相互作用ロジック

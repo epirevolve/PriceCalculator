@@ -4,6 +4,15 @@ using System.Linq;
 
 namespace PriceCalculator.Domain.Model.Wholesale
 {
+    public enum WholesalerQuality
+    {
+        VeryGood,
+        Good,
+        Normal,
+        Poor,
+        VeryPoor
+    }
+
     public sealed class Wholesaler : DomainHelper.IEntity<Wholesaler>
     {
 
@@ -13,7 +22,8 @@ namespace PriceCalculator.Domain.Model.Wholesale
         private string _name;
         private string _personInCharge;
         private string _contact;
-        private readonly IList<GoodsId> _goods;
+        private readonly IList<IngredientId> _goods;
+        private WholesalerQuality _wholesalerQuality;
 
         #endregion
 
@@ -23,7 +33,7 @@ namespace PriceCalculator.Domain.Model.Wholesale
 
         #region constructor
 
-        private Wholesaler(WholesalerId id, string name, string personInCharge, string contact, IList<GoodsId> goods)
+        private Wholesaler(WholesalerId id, string name, string personInCharge, string contact, IList<IngredientId> goods)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -34,7 +44,7 @@ namespace PriceCalculator.Domain.Model.Wholesale
             this._name = name;
             this._personInCharge = personInCharge;
             this._contact = contact;
-            this._goods = goods ?? new List<GoodsId>();
+            this._goods = goods ?? new List<IngredientId>();
         }
 
         #endregion

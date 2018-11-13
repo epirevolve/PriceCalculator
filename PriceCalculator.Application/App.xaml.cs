@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace PriceCalculation.Application
+namespace PriceCalculator.Application
 {
     /// <summary>
     /// App.xaml の相互作用ロジック

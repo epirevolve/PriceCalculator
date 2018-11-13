@@ -7,21 +7,21 @@ namespace PriceCalculator.Domain.Model.Product
 
         #region variable
 
-        readonly MonthAndDate _from;
-        readonly MonthAndDate _till;
+        readonly MonthAndDay _from;
+        readonly MonthAndDay _till;
 
         #endregion
 
         #region property
 
-        public MonthAndDate From => this._from;
-        public MonthAndDate Till => this._till;
+        public MonthAndDay From => this._from;
+        public MonthAndDay Till => this._till;
 
         #endregion
 
         #region constructor
 
-        private SalesPeriod(MonthAndDate from, MonthAndDate till)
+        private SalesPeriod(MonthAndDay from, MonthAndDay till)
         {
             this._from = from;
             this._till = till;
@@ -31,24 +31,24 @@ namespace PriceCalculator.Domain.Model.Product
 
         #region factory
 
-        public SalesPeriod SellInLimitedTime(int fromMonth, int fromDay, int tillMonth, int tillDay)
+        public static SalesPeriod SellInLimitedTime(int fromMonth, int fromDay, int tillMonth, int tillDay)
         {
-            return new SalesPeriod(new MonthAndDate(fromMonth, fromDay), new MonthAndDate(tillMonth, tillDay));
+            return new SalesPeriod(new MonthAndDay(fromMonth, fromDay), new MonthAndDay(tillMonth, tillDay));
         }
 
-        public SalesPeriod SellYearRound()
+        public static SalesPeriod SellYearRound()
         {
-            return new SalesPeriod(new MonthAndDate(1, 1), new MonthAndDate(12, 31));
+            return new SalesPeriod(new MonthAndDay(1, 1), new MonthAndDay(12, 31));
         }
 
         public SalesPeriod StartSellingEarlier(int month, int day)
         {
-            return new SalesPeriod(new MonthAndDate(month, day), this._till);
+            return new SalesPeriod(new MonthAndDay(month, day), this._till);
         }
 
         public SalesPeriod PostponeTheEndOfSelling(int month, int day)
         {
-            return new SalesPeriod(this._from, new MonthAndDate(month, day));
+            return new SalesPeriod(this._from, new MonthAndDay(month, day));
         }
 
         #endregion

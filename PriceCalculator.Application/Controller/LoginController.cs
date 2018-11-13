@@ -7,7 +7,7 @@ using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
 using WpfLibrary.ApplicationHelper.Messenger;
 
-namespace PriceCalculation.Application.Controller
+namespace PriceCalculator.Application.Controller
 {
     sealed class LoginController : WpfLibrary.ApplicationHelper.Controller.BaseController
     {

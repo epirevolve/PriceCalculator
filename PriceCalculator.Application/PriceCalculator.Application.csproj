@@ -60,12 +60,6 @@
     <Reference Include="DomainEventPublisher">
       <HintPath>..\..\myLibraries\DomainEventPublisher.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -140,6 +134,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\Domain\Product\ProductListController.cs" />
     <Compile Include="Controller\LayoutController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="View\Domain\Product\ProductListUserControl.xaml.cs">
@@ -194,7 +189,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\Domain\" />
     <Folder Include="Service\" />
     <Folder Include="View\Domain\Wholesale\" />
   </ItemGroup>

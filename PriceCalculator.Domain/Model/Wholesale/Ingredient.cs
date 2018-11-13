@@ -2,16 +2,16 @@
 
 namespace PriceCalculator.Domain.Model.Wholesale
 {
-    public sealed class Goods : DomainHelper.IEntity<Goods>
+    public sealed class Ingredient : DomainHelper.IEntity<Ingredient>
     {
 
         #region variable
 
-        private readonly GoodsId _id;
+        private readonly IngredientId _id;
         private string _name;
         private readonly WholesalerId _wholesalerId;
-        private decimal _price;
         private PurchaseAmount _purchaseAmount;
+        private readonly YearlySet<IngredientMonthlyProperty> _monthlyProperyYearlySet;
 
         #endregion
 
@@ -21,22 +21,22 @@ namespace PriceCalculator.Domain.Model.Wholesale
 
         #region constructor
 
-        private Goods(GoodsId id, string name, WholesalerId wholesalerId, decimal price, PurchaseAmount purchaseAmount)
+        private Ingredient(IngredientId id, string name, WholesalerId wholesalerId, decimal price, PurchaseAmount purchaseAmount)
         {
             this._id = id ?? throw new ArgumentNullException(nameof(id));
             this._name = name ?? throw new ArgumentNullException(nameof(name));
             this._wholesalerId = wholesalerId ?? throw new ArgumentNullException(nameof(wholesalerId));
-            this._price = price;
             this._purchaseAmount = purchaseAmount ?? throw new ArgumentNullException(nameof(purchaseAmount));
+            this._monthlyProperyYearlySet = new YearlySet<IngredientMonthlyProperty>();
         }
 
         #endregion
 
         #region factory
 
-        public static Goods TreatNewGoods(string name, WholesalerId wholesalerId, decimal price, PurchaseAmount purchaseAmount)
+        public static Ingredient UseNewIngredient(string name, WholesalerId wholesalerId, decimal price, PurchaseAmount purchaseAmount)
         {
-            return new Goods(GoodsIdRepository.NextIdentifier(), name, wholesalerId, price, purchaseAmount);
+            return new Ingredient(IngredientIdRepository.NextIdentifier(), name, wholesalerId, price, purchaseAmount);
         }
 
         #endregion
@@ -48,9 +48,9 @@ namespace PriceCalculator.Domain.Model.Wholesale
             this._name = name;
         }
 
-        public void ChangePrice(decimal price)
+        public void ChangePrice(decimal price, int month)
         {
-            this._price = price;
+            this._monthlyProperyYearlySet.Month(month).ChangePrice(price);
         }
 
         #endregion
@@ -60,7 +60,7 @@ namespace PriceCalculator.Domain.Model.Wholesale
         public override bool Equals(object obj)
         {
             if (obj == null || obj.GetType() != this.GetType()) return false;
-            var other = (Goods)obj;
+            var other = (Ingredient)obj;
             return this._id.Equals(other._id) && this._name.Equals(other._name) && this._wholesalerId.Equals(other._wholesalerId);
         }
 
@@ -69,11 +69,12 @@ namespace PriceCalculator.Domain.Model.Wholesale
             return this._id.GetHashCode() ^ this._name.GetHashCode() ^ this._wholesalerId.GetHashCode();
         }
 
-        public bool SameIdentityAs(Goods other)
+        public bool SameIdentityAs(Ingredient other)
         {
             return this.Equals(other);
         }
 
         #endregion
+
     }
 }

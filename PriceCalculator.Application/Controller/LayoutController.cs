@@ -7,7 +7,7 @@ using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
 using WpfLibrary.ApplicationHelper.Messenger;
 
-namespace PriceCalculation.Application.Controller
+namespace PriceCalculator.Application.Controller
 {
     sealed class LayoutController : WpfLibrary.ApplicationHelper.Controller.BaseController
     {
@@ -47,7 +47,7 @@ namespace PriceCalculation.Application.Controller
 
         private void ShowProductList()
         {
-            this.Messenger.Raise(new TransitionMessage(null, "ShowProductList"));
+            this.Messenger.Raise(new TransitionMessage(new Domain.Product.ProductListController(), "ShowProductList"));
         }
 
         private void RegisterProduct()

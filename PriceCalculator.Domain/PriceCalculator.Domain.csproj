@@ -49,18 +49,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Product\MonthAndDate.cs" />
+    <Compile Include="Model\Product\MonthAndDay.cs" />
     <Compile Include="Model\Product\SalesPeriod.cs" />
     <Compile Include="Model\Product\Product.cs" />
     <Compile Include="Model\Product\ProductId.cs" />
-    <Compile Include="Model\Product\ProductRepository.cs" />
-    <Compile Include="Model\Wholesale\Goods.cs" />
-    <Compile Include="Model\Wholesale\GoodsId.cs" />
-    <Compile Include="Model\Wholesale\GoodsIdRepository.cs" />
+    <Compile Include="Model\Product\ProductIdRepository.cs" />
+    <Compile Include="Model\Wholesale\Ingredient.cs" />
+    <Compile Include="Model\Wholesale\IngredientId.cs" />
+    <Compile Include="Model\Wholesale\IngredientIdRepository.cs" />
+    <Compile Include="Model\Wholesale\IngredientMonthlyProperty.cs" />
     <Compile Include="Model\Wholesale\PurchaseAmount.cs" />
     <Compile Include="Model\Wholesale\Wholesaler.cs" />
     <Compile Include="Model\Wholesale\WholesalerId.cs" />
     <Compile Include="Model\Wholesale\WholesalerIdRepository.cs" />
+    <Compile Include="Model\Wholesale\YearlySet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
