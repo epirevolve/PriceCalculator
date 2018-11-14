@@ -1,0 +1,22 @@
+﻿<Window x:Class="StoreSupportTool.Application.View.Domain.Product.ProductRegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        Title="商品登録" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <TextBox material:HintAssist.Hint="商品名" HorizontalAlignment="Stretch" />
+        <DataGrid Grid.Row="1" CanUserAddRows="True">
+            
+        </DataGrid>
+        <WrapPanel Grid.Row="2">
+            
+        </WrapPanel>
+    </Grid>
+</Window>

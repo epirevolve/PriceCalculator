@@ -11,17 +11,29 @@ namespace StoreHelper.Domain.Model.Product
 
         public sealed class Description
         {
-            public string Id { get; private set; }
-            public string Name { get; private set; }
-            public double CostRate { get; private set; }
-            public decimal Price { get; private set; }
+            public string Id { get; }
+            public string Name { get; }
+            public double CostRate { get; }
+            public decimal Price { get; }
+            public Dictionary<string, int> IngredientsTable { get; }
+            public bool IsSellingYearRound{ get; }
+            public int SellingFromMonth { get; }
+            public int SellingFromDay { get; }
+            public int SellingTillMonth { get; }
+            public int SellingTillDay { get; }
 
-            public Description(ProductId id, string name, double costRate, decimal price)
+            public Description(Product product)
             {
-                this.Id = id.IdString;
-                this.Name = name;
-                this.CostRate = costRate;
-                this.Price = price;
+                this.Id = product._id.IdString;
+                this.Name = product._name;
+                this.CostRate = product._costRate;
+                this.Price = product._price;
+                this.IngredientsTable = product._ingredientsTable.ToDictionary(x => x.Key.IdString, x => x.Value);
+                this.IsSellingYearRound = SalesPeriod.SellYearRound().SameValueAs(product._salesPeriod);
+                this.SellingFromMonth = product._salesPeriod.From.Month;
+                this.SellingFromDay = product._salesPeriod.From.Day;
+                this.SellingTillMonth = product._salesPeriod.Till.Month;
+                this.SellingTillDay = product._salesPeriod.Till.Day;
             }
         }
 
@@ -70,7 +82,7 @@ namespace StoreHelper.Domain.Model.Product
 
         public Description Describe()
         {
-            return new Description(this._id, this._name, this._costRate, this._price);
+            return new Description(this);
         }
 
         #endregion

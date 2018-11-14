@@ -24,6 +24,7 @@ namespace StoreHelper.Infrastructure.Repository
             var product = Product.CreateANewProduct("テスト", SalesPeriod.SellYearRound(), null, 3.5);
             this._products.Add(product.Describe().Id, product);
             product = Product.CreateANewProduct("テスト２", SalesPeriod.SellInLimitedTime(6, 1, 10, 31), null, 2.8);
+            this._products.Add(product.Describe().Id, product);
         }
 
         #endregion

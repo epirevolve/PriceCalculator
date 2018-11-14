@@ -10,10 +10,22 @@
         </Grid.RowDefinitions>
 
         <DataGrid ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct.Value}">
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MaterialDesignDataGridRow}">
+                    <Setter Property="ContextMenu">
+                        <Setter.Value>
+                            <ContextMenu>
+                                <MenuItem Header="値段情報変更" />
+                                <MenuItem Header="販売情報変更" />
+                            </ContextMenu>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.RowStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="商品" Binding="{Binding Name.Value}" />
-                <DataGridTextColumn Header="原価率" Binding="{Binding CostRate.Value}" />
-                <DataGridTextColumn Header="値段" Binding="{Binding Price.Value}" />
+                <DataGridTextColumn Header="商品名" Binding="{Binding Name.Value, Mode=OneWay}" />
+                <DataGridTextColumn Header="原価率" Binding="{Binding CostRate.Value, Mode=OneWay}" />
+                <DataGridTextColumn Header="値段" Binding="{Binding Price.Value, Mode=OneWay}" />
             </DataGrid.Columns>
         </DataGrid>
 
@@ -33,23 +45,25 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <WrapPanel>
-                <TextBox Text="{Binding Name.Value}" material:HintAssist.Hint="商品" />
-                <TextBox Text="{Binding CostRate.Value}" material:HintAssist.Hint="原価率" />
-                <TextBox Text="{Binding Price.Value}" material:HintAssist.Hint="値段" />
+            <WrapPanel Margin="5">
+                <TextBox Text="{Binding Name.Value, Mode=OneWay}" material:HintAssist.Hint="商品名" HorizontalAlignment="Stretch" />
             </WrapPanel>
-            <DataGrid Grid.Row="1" ItemsSource="{Binding IngredientsTable}">
+            <DataGrid Grid.Row="1" ItemsSource="{Binding IngredientsTable}" Margin="5">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="原材料" Binding="{Binding Name.Value}" />
-                    <DataGridTextColumn Header="分量" Binding="{Binding Amount.Value}" />
+                    <DataGridTextColumn Header="原材料" Binding="{Binding Name.Value, Mode=OneWay}" />
+                    <DataGridTextColumn Header="分量" Binding="{Binding Amount.Value, Mode=OneWay}" />
                 </DataGrid.Columns>
             </DataGrid>
-            <WrapPanel Grid.Row="2">
+            <WrapPanel Grid.Row="2" Margin="5">
+                <TextBox Text="{Binding CostRate.Value, Mode=OneWay}" material:HintAssist.Hint="原価率" />
+                <TextBox Text="{Binding Price.Value, Mode=OneWay}" material:HintAssist.Hint="値段" />
                 <TextBox material:HintAssist.Hint="販売時期">
                     <TextBox.Text>
-                        <MultiBinding StringFormat="{}{0:MM/dd} ～ {1:MM/dd}">
-                            <Binding Path="SellingFrom" />
-                            <Binding Path="SellingTill" />
+                        <MultiBinding StringFormat="{}{0}/{1} ～ {2}/{3}">
+                            <Binding Path="SellingFromMonth.Value" Mode="OneWay" />
+                            <Binding Path="SellingFromDay.Value" Mode="OneWay" />
+                            <Binding Path="SellingTillMonth.Value" Mode="OneWay" />
+                            <Binding Path="SellingTillDay.Value" Mode="OneWay" />
                         </MultiBinding>
                     </TextBox.Text>
                     <TextBox.Style>

@@ -140,6 +140,15 @@
     <Compile Include="View\Domain\Product\ProductListUserControl.xaml.cs">
       <DependentUpon>ProductListUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Domain\Product\ProductPriceRecalculateWindow.xaml.cs">
+      <DependentUpon>ProductPriceRecalculateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Domain\Product\ProductRegisterWindow.xaml.cs">
+      <DependentUpon>ProductRegisterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Domain\Product\ProductSellingInfoRenewWindow.xaml.cs">
+      <DependentUpon>ProductSellingInfoRenewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LayoutWindow.xaml.cs">
       <DependentUpon>LayoutWindow.xaml</DependentUpon>
     </Compile>
@@ -176,6 +185,18 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="View\Domain\Product\ProductListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Domain\Product\ProductPriceRecalculateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Domain\Product\ProductRegisterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Domain\Product\ProductSellingInfoRenewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

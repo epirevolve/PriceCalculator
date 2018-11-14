@@ -8,7 +8,7 @@
                    
                    Style="{StaticResource MyDesignBaseWindow}"
                    GlowBrush="{DynamicResource AccentColorBrush}" 
-                   ResizeMode="CanResizeWithGrip" Title="原価管理ツール ログイン" Height="450" Width="800"
+                   ResizeMode="CanResizeWithGrip" Title="お店のお手伝いさん ログイン" Height="450" Width="800"
                    behavior:CloseWindowBehavior.Close="{Binding Close}" WindowStartupLocation="CenterScreen">
     <interactivity:Interaction.Triggers>
         <behavior:InteractionMessageTrigger Messenger="{Binding Messenger}" MessageKey="ShowHome">
