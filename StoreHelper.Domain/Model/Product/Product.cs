@@ -18,9 +18,9 @@ namespace StoreHelper.Domain.Model.Product
             public Dictionary<string, int> IngredientsTable { get; }
             public bool IsSellingYearRound{ get; }
             public int SellingFromMonth { get; }
-            public int SellingFromDay { get; }
+            public RoughDay SellingFromDay { get; }
             public int SellingTillMonth { get; }
-            public int SellingTillDay { get; }
+            public RoughDay SellingTillDay { get; }
 
             public Description(Product product)
             {
@@ -31,9 +31,9 @@ namespace StoreHelper.Domain.Model.Product
                 this.IngredientsTable = product._ingredientsTable.ToDictionary(x => x.Key.IdString, x => x.Value);
                 this.IsSellingYearRound = SalesPeriod.SellYearRound().SameValueAs(product._salesPeriod);
                 this.SellingFromMonth = product._salesPeriod.From.Month;
-                this.SellingFromDay = product._salesPeriod.From.Day;
+                this.SellingFromDay = product._salesPeriod.From.RoughDay;
                 this.SellingTillMonth = product._salesPeriod.Till.Month;
-                this.SellingTillDay = product._salesPeriod.Till.Day;
+                this.SellingTillDay = product._salesPeriod.Till.RoughDay;
             }
         }
 
@@ -89,7 +89,7 @@ namespace StoreHelper.Domain.Model.Product
 
         #region method
 
-        public void SellInLimitedTime(int fromMonth, int fromDay, int tillMonth, int tillDay)
+        public void SellInLimitedTime(int fromMonth, RoughDay fromDay, int tillMonth, RoughDay tillDay)
         {
             this._salesPeriod = SalesPeriod.SellInLimitedTime(fromMonth, fromDay, tillMonth, tillDay);
         }
@@ -99,12 +99,12 @@ namespace StoreHelper.Domain.Model.Product
             this._salesPeriod = SalesPeriod.SellYearRound();
         }
 
-        public void StartSellingEarlier(int month, int day)
+        public void StartSellingEarlier(int month, RoughDay day)
         {
             this._salesPeriod = this._salesPeriod.StartSellingEarlier(month, day);
         }
 
-        public void PostponeTheEndOfSelling(int month, int day)
+        public void PostponeTheEndOfSelling(int month, RoughDay day)
         {
             this._salesPeriod = this._salesPeriod.PostponeTheEndOfSelling(month, day);
         }

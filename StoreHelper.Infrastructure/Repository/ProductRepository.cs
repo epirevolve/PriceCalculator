@@ -23,7 +23,7 @@ namespace StoreHelper.Infrastructure.Repository
             this._products = new Dictionary<string, Product>();
             var product = Product.CreateANewProduct("テスト", SalesPeriod.SellYearRound(), null, 3.5);
             this._products.Add(product.Describe().Id, product);
-            product = Product.CreateANewProduct("テスト２", SalesPeriod.SellInLimitedTime(6, 1, 10, 31), null, 2.8);
+            product = Product.CreateANewProduct("テスト２", SalesPeriod.SellInLimitedTime(6, RoughDay.middle, 10, RoughDay.beginning), null, 2.8);
             this._products.Add(product.Describe().Id, product);
         }
 

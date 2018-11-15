@@ -11,7 +11,7 @@
                    Style="{StaticResource MyDesignBaseWindow}"
                    GlowBrush="{DynamicResource AccentColorBrush}"
                    ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen"
-                   Title="お店のお手伝いさん" Height="600" Width="1200" MinHeight="600" MinWidth="1200">
+                   Title="StoreHelper" Height="600" Width="1200" MinHeight="600" MinWidth="1200">
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands>
             <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False" x:Name="MenuToggleButton" Width="30" Height="30" />

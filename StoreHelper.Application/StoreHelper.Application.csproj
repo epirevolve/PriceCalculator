@@ -137,6 +137,7 @@
     <Compile Include="Controller\Domain\Product\ProductListController.cs" />
     <Compile Include="Controller\LayoutController.cs" />
     <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Utility\Converter\RoughDayConverter.cs" />
     <Compile Include="View\Domain\Product\ProductListUserControl.xaml.cs">
       <DependentUpon>ProductListUserControl.xaml</DependentUpon>
     </Compile>
@@ -211,6 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Service\" />
+    <Folder Include="Utility\MarkupExtension\" />
     <Folder Include="View\Domain\Wholesale\" />
   </ItemGroup>
   <ItemGroup>

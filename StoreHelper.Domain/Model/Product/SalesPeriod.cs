@@ -7,21 +7,21 @@ namespace StoreHelper.Domain.Model.Product
 
         #region variable
 
-        readonly MonthAndDay _from;
-        readonly MonthAndDay _till;
+        readonly RoughDate _from;
+        readonly RoughDate _till;
 
         #endregion
 
         #region property
 
-        public MonthAndDay From => this._from;
-        public MonthAndDay Till => this._till;
+        public RoughDate From => this._from;
+        public RoughDate Till => this._till;
 
         #endregion
 
         #region constructor
 
-        private SalesPeriod(MonthAndDay from, MonthAndDay till)
+        private SalesPeriod(RoughDate from, RoughDate till)
         {
             this._from = from;
             this._till = till;
@@ -31,24 +31,24 @@ namespace StoreHelper.Domain.Model.Product
 
         #region factory
 
-        public static SalesPeriod SellInLimitedTime(int fromMonth, int fromDay, int tillMonth, int tillDay)
+        public static SalesPeriod SellInLimitedTime(int fromMonth, RoughDay fromDay, int tillMonth, RoughDay tillDay)
         {
-            return new SalesPeriod(new MonthAndDay(fromMonth, fromDay), new MonthAndDay(tillMonth, tillDay));
+            return new SalesPeriod(new RoughDate(fromMonth, fromDay), new RoughDate(tillMonth, tillDay));
         }
 
         public static SalesPeriod SellYearRound()
         {
-            return new SalesPeriod(new MonthAndDay(1, 1), new MonthAndDay(12, 31));
+            return new SalesPeriod(new RoughDate(1, RoughDay.beginning), new RoughDate(12, RoughDay.end));
         }
 
-        public SalesPeriod StartSellingEarlier(int month, int day)
+        public SalesPeriod StartSellingEarlier(int month, RoughDay day)
         {
-            return new SalesPeriod(new MonthAndDay(month, day), this._till);
+            return new SalesPeriod(new RoughDate(month, day), this._till);
         }
 
-        public SalesPeriod PostponeTheEndOfSelling(int month, int day)
+        public SalesPeriod PostponeTheEndOfSelling(int month, RoughDay day)
         {
-            return new SalesPeriod(this._from, new MonthAndDay(month, day));
+            return new SalesPeriod(this._from, new RoughDate(month, day));
         }
 
         #endregion
@@ -58,7 +58,7 @@ namespace StoreHelper.Domain.Model.Product
         public bool IsInLimitedTime()
         {
             return this._from.IsEarlierThan(DateTime.Now.Date.Month, DateTime.Now.Date.Day)
-                && (this._till.IsLaterThan(DateTime.Now.Date.Month, DateTime.Now.Date.Day) || this._till.IsEarlierThan(this._from.Month, this._from.Day));
+                && (this._till.IsLaterThan(DateTime.Now.Date.Month, DateTime.Now.Date.Day) || this._till.IsEarlierThan(this._from.Month, this._from.RoughDay));
         }
 
         #endregion
@@ -79,7 +79,7 @@ namespace StoreHelper.Domain.Model.Product
 
         public bool SameValueAs(SalesPeriod other)
         {
-            return other != null && this._from == other._from && this._till == other._till;
+            return other != null && this._from.SameValueAs(other._from) && this._till.SameValueAs(other._till);
         }
 
         #endregion

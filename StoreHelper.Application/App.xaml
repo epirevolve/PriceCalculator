@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:StoreHelper.Application"
              xmlns:converter="clr-namespace:WpfLibrary.ApplicationHelper.Converter;assembly=WpfLibrary.ApplicationHelper"
+             xmlns:myconverter="clr-namespace:StoreSupportTool.Application.Utility.Converter"
+             
              Startup="Application_Startup">
     <Application.Resources>
         <ResourceDictionary>
@@ -52,6 +54,8 @@
             <converter:FileNameExtractConverter x:Key="FileNameExtractConverter" />
             <converter:BoolToCheckConverter x:Key="BoolToCheckConverter" />
             <converter:MultiLineTextEllipsisConverter x:Key="MultiLineTextEllipsisConverter" />
+
+            <myconverter:RoughDayConverter x:Key="RoughDayConverter" />
 
         </ResourceDictionary>
     </Application.Resources>

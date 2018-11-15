@@ -49,7 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Product\MonthAndDay.cs" />
+    <Compile Include="Model\Product\RoughDate.cs" />
     <Compile Include="Model\Product\SalesPeriod.cs" />
     <Compile Include="Model\Product\Product.cs" />
     <Compile Include="Model\Product\ProductId.cs" />

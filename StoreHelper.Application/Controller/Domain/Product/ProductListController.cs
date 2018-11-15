@@ -44,11 +44,11 @@ namespace StoreHelper.Application.Controller.Domain.Product
         public ReactiveProperty<double> CostRate { get; private set; }
         public ReactiveProperty<decimal> Price { get; private set; }
         public ObservableCollection<IngredientViewModel> IngredientsTable { get; private set; }
-        public ReactiveProperty<bool> IsSellingYearAround { get; private set; }
+        public ReactiveProperty<bool> IsSellingYearRound { get; private set; }
         public ReactiveProperty<int> SellingFromMonth { get; private set; }
-        public ReactiveProperty<int> SellingFromDay { get; private set; }
+        public ReactiveProperty<RoughDay> SellingFromDay { get; private set; }
         public ReactiveProperty<int> SellingTillMonth { get; private set; }
-        public ReactiveProperty<int> SellingTillDay { get; private set; }
+        public ReactiveProperty<RoughDay> SellingTillDay { get; private set; }
 
         #endregion
 
@@ -60,11 +60,11 @@ namespace StoreHelper.Application.Controller.Domain.Product
             this.Name = new ReactiveProperty<string>(description.Name).AddTo(this.CompositeDisposable);
             this.CostRate = new ReactiveProperty<double>(description.CostRate).AddTo(this.CompositeDisposable);
             this.Price = new ReactiveProperty<decimal>(description.Price).AddTo(this.CompositeDisposable);
-            this.IsSellingYearAround = new ReactiveProperty<bool>(description.IsSellingYearRound).AddTo(this.CompositeDisposable);
+            this.IsSellingYearRound = new ReactiveProperty<bool>(description.IsSellingYearRound).AddTo(this.CompositeDisposable);
             this.SellingFromMonth = new ReactiveProperty<int>(description.SellingFromMonth).AddTo(this.CompositeDisposable);
-            this.SellingFromDay = new ReactiveProperty<int>(description.SellingFromDay).AddTo(this.CompositeDisposable);
+            this.SellingFromDay = new ReactiveProperty<RoughDay>(description.SellingFromDay).AddTo(this.CompositeDisposable);
             this.SellingTillMonth = new ReactiveProperty<int>(description.SellingTillMonth).AddTo(this.CompositeDisposable);
-            this.SellingTillDay = new ReactiveProperty<int>(description.SellingTillDay).AddTo(this.CompositeDisposable);
+            this.SellingTillDay = new ReactiveProperty<RoughDay>(description.SellingTillDay).AddTo(this.CompositeDisposable);
         }
 
         #endregion

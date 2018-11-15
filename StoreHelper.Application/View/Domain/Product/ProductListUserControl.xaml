@@ -58,19 +58,23 @@
                 <TextBox Text="{Binding CostRate.Value, Mode=OneWay}" material:HintAssist.Hint="原価率" />
                 <TextBox Text="{Binding Price.Value, Mode=OneWay}" material:HintAssist.Hint="値段" />
                 <TextBox material:HintAssist.Hint="販売時期">
-                    <TextBox.Text>
-                        <MultiBinding StringFormat="{}{0}/{1} ～ {2}/{3}">
-                            <Binding Path="SellingFromMonth.Value" Mode="OneWay" />
-                            <Binding Path="SellingFromDay.Value" Mode="OneWay" />
-                            <Binding Path="SellingTillMonth.Value" Mode="OneWay" />
-                            <Binding Path="SellingTillDay.Value" Mode="OneWay" />
-                        </MultiBinding>
-                    </TextBox.Text>
                     <TextBox.Style>
                         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MyDesignTextBox}">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding IsSellingYearAround}" Value="True">
+                                <DataTrigger Binding="{Binding IsSellingYearRound.Value}" Value="True">
                                     <Setter Property="Text" Value="通年販売" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsSellingYearRound.Value}" Value="False">
+                                    <Setter Property="Text">
+                                        <Setter.Value>
+                                            <MultiBinding StringFormat="{}{0}月 {1} ～ {2}月 {3}">
+                                                <Binding Path="SellingFromMonth.Value" Mode="OneWay" />
+                                                <Binding Path="SellingFromDay.Value" Mode="OneWay" Converter="{StaticResource RoughDayConverter}" />
+                                                <Binding Path="SellingTillMonth.Value" Mode="OneWay" />
+                                                <Binding Path="SellingTillDay.Value" Mode="OneWay" Converter="{StaticResource RoughDayConverter}" />
+                                            </MultiBinding>
+                                        </Setter.Value>
+                                    </Setter>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>

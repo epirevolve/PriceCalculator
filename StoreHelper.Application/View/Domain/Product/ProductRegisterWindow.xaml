@@ -2,21 +2,35 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
         
+        Style="{StaticResource MyDesignBaseWindow}"
         Title="商品登録" Height="450" Width="800">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
-        <TextBox material:HintAssist.Hint="商品名" HorizontalAlignment="Stretch" />
-        <DataGrid Grid.Row="1" CanUserAddRows="True">
+
+        <WrapPanel Margin="5">
+            <TextBox material:HintAssist.Hint="商品名" HorizontalAlignment="Stretch" />
+        </WrapPanel>
+        <DataGrid Grid.Row="1" CanUserAddRows="True" Margin="5">
             
         </DataGrid>
-        <WrapPanel Grid.Row="2">
-            
+        <WrapPanel Grid.Row="2" Margin="5">
+            <Slider Value="{Binding CostRate.Value}" Minimum="0" Maximum="10" />
+            <metro:NumericUpDown />
+        </WrapPanel>
+        <WrapPanel Grid.Row="3" Margin="5">
+            <CheckBox IsChecked="{Binding IsSellingYearRound.Value}" Content="通年販売" />
+            <StackPanel Orientation="Horizontal">
+                <DatePicker material:HintAssist.Hint="販売開始時期" />
+                <TextBlock Text="～" />
+                <DatePicker material:HintAssist.Hint="販売終了時期" />
+            </StackPanel>
         </WrapPanel>
     </Grid>
 </Window>
