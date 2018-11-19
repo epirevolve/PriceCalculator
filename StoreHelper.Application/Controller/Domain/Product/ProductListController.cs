@@ -43,7 +43,7 @@ namespace StoreHelper.Application.Controller.Domain.Product
         public ReactiveProperty<string> Name { get; private set; }
         public ReactiveProperty<double> CostRate { get; private set; }
         public ReactiveProperty<decimal> Price { get; private set; }
-        public ObservableCollection<IngredientViewModel> IngredientsTable { get; private set; }
+        public ObservableCollection<IngredientViewModel> Ingredients { get; private set; }
         public ReactiveProperty<bool> IsSellingYearRound { get; private set; }
         public ReactiveProperty<int> SellingFromMonth { get; private set; }
         public ReactiveProperty<RoughDay> SellingFromDay { get; private set; }

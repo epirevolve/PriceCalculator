@@ -48,7 +48,7 @@
             <WrapPanel Margin="5">
                 <TextBox Text="{Binding Name.Value, Mode=OneWay}" material:HintAssist.Hint="商品名" HorizontalAlignment="Stretch" />
             </WrapPanel>
-            <DataGrid Grid.Row="1" ItemsSource="{Binding IngredientsTable}" Margin="5">
+            <DataGrid Grid.Row="1" ItemsSource="{Binding Ingredients}" Margin="5">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="原材料" Binding="{Binding Name.Value, Mode=OneWay}" />
                     <DataGridTextColumn Header="分量" Binding="{Binding Amount.Value, Mode=OneWay}" />
