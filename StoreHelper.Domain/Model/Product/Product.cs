@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using StoreHelper.Domain.Model.Ingredient;
 
 namespace StoreHelper.Domain.Model.Product
 {
@@ -45,7 +46,7 @@ namespace StoreHelper.Domain.Model.Product
         private string _name;
         private double _costRate;
         private decimal _price;
-        private readonly Dictionary<Wholesale.IngredientId, int> _ingredientsTable;
+        private readonly Dictionary<IngredientId, int> _ingredientsTable;
         private SalesPeriod _salesPeriod;
 
         #endregion
@@ -57,14 +58,14 @@ namespace StoreHelper.Domain.Model.Product
         #region constructor
 
         private Product(ProductId id, string name, SalesPeriod salesPeriod,
-            Dictionary<Wholesale.IngredientId, int> recipe, double costRate)
+            Dictionary<IngredientId, int> recipe, double costRate)
         {
             if (string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
 
             this._id = id ?? throw new ArgumentNullException(nameof(id));
             this._name = name;
             this._salesPeriod = salesPeriod ?? throw new ArgumentNullException(nameof(salesPeriod));
-            this._ingredientsTable = recipe ?? new Dictionary<Wholesale.IngredientId, int>();
+            this._ingredientsTable = recipe ?? new Dictionary<IngredientId, int>();
             this._costRate = costRate;
 
             this.CalculatePrice();
@@ -75,7 +76,7 @@ namespace StoreHelper.Domain.Model.Product
         #region factory
 
         public static Product CreateANewProduct(string name, SalesPeriod salesPeriod,
-            Dictionary<Wholesale.IngredientId, int> recipe, double costRate)
+            Dictionary<IngredientId, int> recipe, double costRate)
         {
             return new Product(ProductIdRepository.NextIdentifier(), name, salesPeriod, recipe, costRate);
         }
@@ -109,17 +110,17 @@ namespace StoreHelper.Domain.Model.Product
             this._salesPeriod = this._salesPeriod.PostponeTheEndOfSelling(month, day);
         }
 
-        public void UseAsIngradient(Wholesale.IngredientId ingredient, int amount)
+        public void UseAsIngradient(IngredientId ingredient, int amount)
         {
             this._ingredientsTable.Add(ingredient, amount);
         }
 
-        public void StopUsingIngradient(Wholesale.IngredientId ingredient)
+        public void StopUsingIngradient(IngredientId ingredient)
         {
             this._ingredientsTable.Remove(ingredient);
         }
 
-        public void ChangeAmountOfIngradient(Wholesale.IngredientId ingredient, int amount)
+        public void ChangeAmountOfIngradient(IngredientId ingredient, int amount)
         {
             this._ingredientsTable[ingredient] = amount;
         }

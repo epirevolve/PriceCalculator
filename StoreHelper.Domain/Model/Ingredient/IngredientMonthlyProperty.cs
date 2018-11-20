@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StoreHelper.Domain.Model.Wholesale
+namespace StoreHelper.Domain.Model.Ingredient
 {
     public enum IngredientQuality
     {

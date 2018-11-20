@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StoreHelper.Domain.Model.Wholesale
+namespace StoreHelper.Domain.Model.Ingredient
 {
     public sealed class IngredientId : DomainHelper.IValueObject<IngredientId>
     {

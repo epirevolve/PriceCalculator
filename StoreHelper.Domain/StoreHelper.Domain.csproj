@@ -54,19 +54,22 @@
     <Compile Include="Model\Product\Product.cs" />
     <Compile Include="Model\Product\ProductId.cs" />
     <Compile Include="Model\Product\ProductIdRepository.cs" />
-    <Compile Include="Model\Wholesale\Ingredient.cs" />
-    <Compile Include="Model\Wholesale\IngredientId.cs" />
-    <Compile Include="Model\Wholesale\IngredientIdRepository.cs" />
-    <Compile Include="Model\Wholesale\IngredientMonthlyProperty.cs" />
+    <Compile Include="Model\Ingredient\Ingredient.cs" />
+    <Compile Include="Model\Ingredient\IngredientId.cs" />
+    <Compile Include="Model\Ingredient\IngredientIdRepository.cs" />
+    <Compile Include="Model\Ingredient\IngredientMonthlyProperty.cs" />
     <Compile Include="Model\Wholesale\PurchaseAmount.cs" />
     <Compile Include="Model\Wholesale\Wholesaler.cs" />
     <Compile Include="Model\Wholesale\WholesalerId.cs" />
     <Compile Include="Model\Wholesale\WholesalerIdRepository.cs" />
-    <Compile Include="Model\Wholesale\YearlySet.cs" />
+    <Compile Include="Model\Ingredient\YearlySet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\Product\Event\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dsl" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using StoreHelper.Domain.Model.Ingredient;
 
 namespace StoreHelper.Domain.Model.Wholesale
 {

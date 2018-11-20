@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UtilityLibrary.Extension;
 
-namespace StoreHelper.Domain.Model.Wholesale
+namespace StoreHelper.Domain.Model.Ingredient
 {
     public sealed class YearlySet<TType> : DomainHelper.IValueObject<YearlySet<TType>>
     {

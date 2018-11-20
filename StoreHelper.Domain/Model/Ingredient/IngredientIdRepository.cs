@@ -1,4 +1,4 @@
-﻿namespace StoreHelper.Domain.Model.Wholesale
+﻿namespace StoreHelper.Domain.Model.Ingredient
 {
     class IngredientIdRepository : DomainHelper.GuidRepository
     {

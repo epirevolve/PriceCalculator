@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StoreHelper.Domain.Model.Wholesale
+namespace StoreHelper.Domain.Model.Ingredient
 {
     public sealed class Ingredient : DomainHelper.IEntity<Ingredient>
     {
@@ -9,8 +9,6 @@ namespace StoreHelper.Domain.Model.Wholesale
 
         private readonly IngredientId _id;
         private string _name;
-        private readonly WholesalerId _wholesalerId;
-        private PurchaseAmount _purchaseAmount;
         private readonly YearlySet<IngredientMonthlyProperty> _monthlyProperyYearlySet;
 
         #endregion
@@ -21,12 +19,10 @@ namespace StoreHelper.Domain.Model.Wholesale
 
         #region constructor
 
-        private Ingredient(IngredientId id, string name, WholesalerId wholesalerId, decimal price, PurchaseAmount purchaseAmount)
+        private Ingredient(IngredientId id, string name, decimal price)
         {
             this._id = id ?? throw new ArgumentNullException(nameof(id));
             this._name = name ?? throw new ArgumentNullException(nameof(name));
-            this._wholesalerId = wholesalerId ?? throw new ArgumentNullException(nameof(wholesalerId));
-            this._purchaseAmount = purchaseAmount ?? throw new ArgumentNullException(nameof(purchaseAmount));
             this._monthlyProperyYearlySet = new YearlySet<IngredientMonthlyProperty>();
         }
 
@@ -34,9 +30,9 @@ namespace StoreHelper.Domain.Model.Wholesale
 
         #region factory
 
-        public static Ingredient UseNewIngredient(string name, WholesalerId wholesalerId, decimal price, PurchaseAmount purchaseAmount)
+        public static Ingredient UseNewIngredient(string name, decimal price)
         {
-            return new Ingredient(IngredientIdRepository.NextIdentifier(), name, wholesalerId, price, purchaseAmount);
+            return new Ingredient(IngredientIdRepository.NextIdentifier(), name, price);
         }
 
         #endregion
@@ -61,12 +57,12 @@ namespace StoreHelper.Domain.Model.Wholesale
         {
             if (obj == null || obj.GetType() != this.GetType()) return false;
             var other = (Ingredient)obj;
-            return this._id.Equals(other._id) && this._name.Equals(other._name) && this._wholesalerId.Equals(other._wholesalerId);
+            return this._id.Equals(other._id) && this._name.Equals(other._name) && this._monthlyProperyYearlySet.Equals(other._monthlyProperyYearlySet);
         }
 
         public override int GetHashCode()
         {
-            return this._id.GetHashCode() ^ this._name.GetHashCode() ^ this._wholesalerId.GetHashCode();
+            return this._id.GetHashCode() ^ this._name.GetHashCode() ^ this._monthlyProperyYearlySet.GetHashCode();
         }
 
         public bool SameIdentityAs(Ingredient other)
